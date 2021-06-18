@@ -1,0 +1,212 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example.axelerant</groupId>
+  <artifactId>BDDProject</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Test PBN Bank</name>
+  <description>Test cases</description>
+  
+  <build>
+  
+   		 <plugins>
+   		 
+   		 		<plugin>
+   		 			<groupId>org.apache.maven.plugins</groupId>
+   		 			<artifactId>maven-surefire-plugin</artifactId>
+   		 			<version>2.17</version>
+   		 			<configuration>
+   		 				<stemPropertyVariables>
+   		 					<propertyName>propertyValue</propertyName>
+   		 					<buildDirectory>${project.build.directory}</buildDirectory>
+   		 				</stemPropertyVariables>
+   		 			</configuration>
+   		 		</plugin>
+	
+		
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-failsafe-plugin</artifactId>
+			<version>2.20</version>
+			<configuration>
+			<includes>
+				<include>%regex[.TestIT.*]</include>
+			</includes>
+			
+			</configuration>
+			<executions>
+				<execution>
+					<goals>
+						<goal>integration-test</goal>
+						<goal>verify</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+		
+		<plugin>
+		    <artifactId>maven-war-plugin</artifactId>
+		    <version>2.4</version>
+		    <configuration>
+		    <failOnMissingWebXml>false</failOnMissingWebXml>
+		    </configuration>
+		</plugin>
+		
+		 <plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-compiler-plugin</artifactId>
+		    <configuration>
+		     <source>1.8</source>
+		     <target>1.8</target>
+		    </configuration>
+	   </plugin>
+	   
+	   <plugin>
+	   	<groupId>org.apache.maven.plugins</groupId>
+	   	<artifactId>maven-compiler-plugin</artifactId>
+	   	<version>3.5.1</version>
+	   	<configuration>
+	   		<source>1.8</source>
+	   		<target>1.8</target>
+	   	</configuration>
+	   </plugin>
+	   
+	   <plugin>
+	   	<groupId>org.apache.httpcomponents</groupId>
+	   	<artifactId>httpclient</artifactId>
+	   	<version>4.3.1</version>
+	   </plugin>
+	   
+	   <plugin>
+	   	<groupId>net.serenity-bdd.maven.plugins</groupId>
+	   	<artifactId>serenity-maven-plugin</artifactId>
+	   	<version>1.1.7</version>
+	   	
+	   	<executions>
+	   		<execution>
+	   			<id>serenity-reports</id>
+	   			<phase>post-integration-test</phase>
+	   			<goals>
+	   				<goal>aggregate</goal>
+	   			</goals>
+	   		</execution>
+	   	</executions>
+	   </plugin>
+	   <plugin>
+	   	<groupId>org.apache.maven.plugins</groupId>
+	   	<artifactId>maven-source-plugin</artifactId>
+	   	<version>3.0.1</version>
+	   	<executions>
+	   		<execution>
+	   			<id>attach-sources</id>
+	   			<goals>
+	   				<goal>jar</goal>
+	   			</goals>
+	   			<configuration>
+	   				<attach>true</attach>
+	   			</configuration>
+	   		</execution>
+	   	</executions>
+	   </plugin>
+			    
+  </plugins>
+  </build>
+
+  
+  
+  
+<dependencies>
+	<dependency>
+	    <groupId>org.seleniumhq.selenium</groupId>
+	    <artifactId>selenium-java</artifactId>
+	    <version>3.141.59</version>
+	</dependency>
+
+	<dependency>
+	    <groupId>org.seleniumhq.selenium</groupId>
+	    <artifactId>selenium-chrome-driver</artifactId>
+	    <version>3.141.59</version>
+	</dependency>
+
+	<dependency>
+	    <groupId>info.cukes</groupId>
+	    <artifactId>gherkin</artifactId>
+	    <version>2.12.2</version>
+	    <scope>provided</scope>
+	</dependency>
+	<dependency>
+	    <groupId>net.serenity-bdd</groupId>
+	    <artifactId>serenity-core</artifactId>
+	    <version>2.4.34</version>
+	</dependency>
+	<dependency>
+	    <groupId>net.serenity-bdd</groupId>
+	    <artifactId>serenity-jbehave</artifactId>
+	    <version>1.46.0</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>net.serenity-bdd</groupId>
+		<artifactId>serenity-jbehave</artifactId>
+		<version>1.5.0</version>
+	</dependency>
+	
+	
+	<dependency>
+		<groupId>org.seleniumhq.selenium</groupId>
+		<artifactId>selenium-common</artifactId>
+		<version>2.0b1</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.11</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit-dep</artifactId>
+		<version>4.11</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.seleniumhq.selenium</groupId>
+		<artifactId>selenium-java</artifactId>
+		<version>3.0.1</version>
+		<scope>compile</scope>
+		<exclusions>
+			<exclusion>
+				<artifactId>commons-logging</artifactId>
+				<groupId>commons-logging</groupId>
+			</exclusion>
+		</exclusions>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.seleniumhq.selenium</groupId>
+		<artifactId>selenium-server</artifactId>
+		<version>3.0.1</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.seleniumhq.selenium</groupId>
+		<artifactId>selenium-remote-driver</artifactId>
+		<version>3.0.1</version>
+		<exclusions>
+			<exclusion>
+				<artifactId>commons-logging</artifactId>
+				<groupId>commons-logging</groupId>
+			</exclusion>
+		</exclusions>
+	</dependency>
+	
+	
+</dependencies>
+
+
+
+</project>
+
+
+
